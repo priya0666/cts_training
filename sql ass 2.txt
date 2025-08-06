@@ -1,0 +1,221 @@
+QUESTION 3(WEDNESDAY)
+Step 1: Create the Example Table
+CREATE TABLE Sales (
+    SaleID INT PRIMARY KEY,
+    Salesperson VARCHAR(50),
+    Region VARCHAR(50),
+    Product VARCHAR(50),
+    Quantity INT,
+    SaleAmount DECIMAL(10,2)
+);
+ Step 2: Insert Sample Data
+INSERT INTO Sales (SaleID, Salesperson, Region, Product, Quantity, SaleAmount) VALUES
+(1, 'Alice', 'North', 'Laptop', 1, 1000.00),
+(2, 'Bob', 'South', 'Mouse', 3, 75.00),
+(3, 'Alice', 'North', 'Monitor', 2, 300.00),
+(4, 'Charlie', 'East', 'Keyboard', 1, 50.00),
+(5, 'Bob', 'South', 'Monitor', 1, 150.00),
+(6, 'Alice', 'North', 'Mouse', 2, 50.00),
+(7, 'Charlie', 'East', 'Laptop', 2, 2000.00),
+(8, 'David', 'West', 'Laptop', 1, 1100.00),
+(9, 'David', 'West', 'Mouse', 4, 100.00),
+(10, 'Eve', 'South', 'Monitor', 3, 450.00),
+(11, 'Eve', 'South', 'Keyboard', 2, 100.00),
+(12, 'Eve', 'South', 'Mouse', 1, 25.00),
+(13, 'Alice', 'North', 'Keyboard', 1, 60.00),
+(14, 'Bob', 'South', 'Laptop', 1, 1200.00),
+(15, 'Charlie', 'East', 'Mouse', 2, 50.00);
+
+1.Find total quantity sold by each salesperson.
++-------------+---------------+
+| salesperson | sum(quantity) |
++-------------+---------------+
+| Alice       |             6 |
+| Bob         |             5 |
+| Charlie     |             5 |
+| David       |             5 |
+| Eve         |             6 |
++-------------+---------------+
+2.Find salespersons who sold more than 5 items in total.
++-------------+---------------+
+| salesperson | sum(quantity) |
++-------------+---------------+
+| Alice       |             6 |
+| Bob         |             5 |
+| Charlie     |             5 |
+| David       |             5 |
+| Eve         |             6 |
++-------------+---------------+
+3.Find number of products sold by each salesperson.
++-------------+----------------+
+| salesperson | count(product) |
++-------------+----------------+
+| Alice       |              4 |
+| Bob         |              3 |
+| Charlie     |              3 |
+| David       |              2 |
+| Eve         |              3 |
++-------------+----------------+
+4.List regions where total sale amount exceeded $1000.
++--------+-----------------+
+| region | sum(saleamount) |
++--------+-----------------+
+| North  |         1410.00 |
+| South  |         2000.00 |
+| East   |         2100.00 |
+| West   |         1200.00 |
++--------+-----------------+
+5.Show salespersons who made more than 2 sales transactions.
++-------------+----------------+
+| salesperson | count(product) |
++-------------+----------------+
+| Alice       |              4 |
+| Bob         |              3 |
+| Charlie     |              3 |
+| Eve         |              3 |
++-------------+----------------+
+6.Find total sale amount by product, and show only products that made over $500 in sales.
++---------+-----------------+
+| product | sum(saleamount) |
++---------+-----------------+
+| Laptop  |         5300.00 |
+| Monitor |          900.00 |
++---------+-----------------+
+7.Show the total quantity sold of each product in each region.
++----------+---------------+
+| product  | sum(quantity) |
++----------+---------------+
+| Laptop   |             1 |
+| Mouse    |             4 |
+| Monitor  |             2 |
+| Keyboard |             1 |
+| Monitor  |             4 |
+| Mouse    |             2 |
+| Laptop   |             2 |
+| Laptop   |             1 |
+| Mouse    |             4 |
+| Keyboard |             2 |
+| Keyboard |             1 |
+| Laptop   |             1 |
+| Mouse    |             2 |
++----------+---------------+
+8.Find salespersons who sold more than 1 type of product.
++-------------+----------------+
+| salesperson | count(product) |
++-------------+----------------+
+| Alice       |              4 |
+| Bob         |              3 |
+| Charlie     |              3 |
+| David       |              2 |
+| Eve         |              3 |
++-------------+----------------+
+9.Find the average quantity per product sold per region, where the average is greater than 1.
++--------+---------------+
+| region | avg(quantity) |
++--------+---------------+
+| South  |        2.0000 |
+| North  |        2.0000 |
+| South  |        2.0000 |
+| North  |        2.0000 |
+| East   |        2.0000 |
+| West   |        4.0000 |
+| South  |        2.0000 |
+| East   |        2.0000 |
++--------+---------------+
+10.Show salespersons whose total sale amount is between $500 and $1500.
++-------------+-----------------+
+| salesperson | sum(saleamount) |
++-------------+-----------------+
+| Alice       |         1410.00 |
+| Bob         |         1425.00 |
+| David       |         1200.00 |
+| Eve         |          575.00 |
++-------------+-----------------+
+11.List top-performing products (more than 3 units sold in total).
++---------+-----------------+
+| product | count(quantity) |
++---------+-----------------+
+| Laptop  |               4 |
+| Mouse   |               5 |
++---------+-----------------+
+12.List salespersons who sold laptops.
++-------------+
+| salesperson |
++-------------+
+| Alice       |
+| Charlie     |
+| David       |
+| Bob         |
++-------------+
+13.Find total sale amount per salesperson per region, only where it exceeds $500.
++-------------+--------+-----------------+
+| salesperson | region | sum(saleamount) |
++-------------+--------+-----------------+
+| Alice       | North  |         1410.00 |
+| Bob         | South  |         1425.00 |
+| Charlie     | East   |         2100.00 |
+| David       | West   |         1200.00 |
+| Eve         | South  |          575.00 |
++-------------+--------+-----------------+
+14.Find salespersons who sold at least 2 different products in a single region.
++-------------+----------------+
+| salesperson | count(product) |
++-------------+----------------+
+| Alice       |              4 |
+| Bob         |              3 |
+| Charlie     |              3 |
+| David       |              2 |
+| Eve         |              3 |
++-------------+----------------+
+15.Find products that were sold in more than one region.
++----------+---------------+
+| product  | count(region) |
++----------+---------------+
+| Laptop   |             4 |
+| Mouse    |             5 |
+| Monitor  |             3 |
+| Keyboard |             3 |
++----------+---------------+
+16.Show total number of sales per product and hide products with fewer than 2 sales.
++----------+---------------+
+| product  | sum(quantity) |
++----------+---------------+
+| Laptop   |             5 |
+| Mouse    |            12 |
+| Monitor  |             6 |
+| Keyboard |             4 |
++----------+---------------+
+17.Find region-wise total quantity sold by each salesperson.
++-------------+---------------+
+| salesperson | sum(quantity) |
++-------------+---------------+
+| Alice       |             6 |
+| Bob         |             5 |
+| Charlie     |             5 |
+| David       |             5 |
+| Eve         |             6 |
++-------------+---------------+
+18.Find salespersons who made more than 3 transactions and total sales amount is over $1000.
++-------------+-----------------+-----------------+
+| salesperson | count(quantity) | sum(saleamount) |
++-------------+-----------------+-----------------+
+| Alice       |               4 |         1410.00 |
++-------------+-----------------+-----------------+
+19.Find average sale amount per region and show only regions with average above $200.
++--------+-----------------+
+| region | avg(saleamount) |
++--------+-----------------+
+| North  |      352.500000 |
+| South  |      333.333333 |
+| East   |      700.000000 |
+| West   |      600.000000 |
++--------+-----------------+
+20.List regions and products where more than 3 units were sold.
++--------+---------+---------------+
+| region | product | sum(quantity) |
++--------+---------+---------------+
+| South  | Mouse   |             4 |
+| South  | Monitor |             4 |
+| West   | Mouse   |             4 |
++--------+---------+---------------+
+
